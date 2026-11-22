@@ -1,3 +1,4 @@
+
 def call(Map cfg = [:]) {
     pipeline {
         agent any
@@ -13,6 +14,26 @@ def call(Map cfg = [:]) {
                 steps {
                     echo "Testing ${cfg.name}"
                 }
+            }
+
+            stage('Deploy') {
+                steps {
+                    echo "Deploying ${cfg.name}"
+                }
+            }
+        }
+
+        post {
+            success {
+                echo "Pipeline for ${cfg.name} completed successfully!"
+            }
+
+            failure {
+                echo "Pipeline for ${cfg.name} failed!"
+            }
+
+            always {
+                echo "Pipeline execution finished."
             }
         }
     }
