@@ -1,1 +1,34 @@
 
+pipeline {
+    agent any
+
+    stages {
+        stage('Checkout') {
+            steps {
+                echo 'Code retrieved from GitHub!'
+            }
+        }
+
+        stage('Build') {
+            steps {
+                echo 'Building the project...'
+            }
+        }
+
+        stage('Test') {
+            steps {
+                echo 'Testing the project...'
+            }
+        }
+    }
+
+    post {
+        success {
+            echo 'GitHub Integration Pipeline completed!'
+        }
+        always {
+            echo 'Pipeline execution finished.'
+        }
+    }
+}
+
