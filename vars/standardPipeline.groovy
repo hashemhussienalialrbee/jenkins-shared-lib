@@ -11,11 +11,11 @@ def call(Map cfg = [:]) {
             }
 
             stage('Test') {
-                steps {
-                    echo "Testing ${cfg.name}"
-                }
-            }
-
+    steps {
+        echo "Testing ${cfg.name}"
+        echo "Running extra checks on ${cfg.name}"
+    }
+}
             stage('Deploy') {
                 steps {
                     echo "Deploying ${cfg.name}"
